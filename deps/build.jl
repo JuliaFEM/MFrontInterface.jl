@@ -11,5 +11,5 @@
 # 7. Make a new release here: https://github.com/TeroFrondelius/mgisBuilder/releases
 # 8. Update the new released build script to below download-command
 
-download("https://github.com/TeroFrondelius/mgisBuilder/releases/download/v0.1.0/build_mgis_binaries.v1.0.0-master.jl", "build_mgis_binaries.jl")
+download("https://github.com/TeroFrondelius/mgisBuilder/releases/download/v0.2.0/build_mgis_binaries.v1.0.0-master.jl", "build_mgis_binaries.jl")
 include("build_mgis_binaries.jl")
