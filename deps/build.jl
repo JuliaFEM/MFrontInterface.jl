@@ -15,6 +15,7 @@
 dependencies = [
     "https://github.com/JuliaPackaging/JuliaBuilder/releases/download/v1.0.0-2/build_Julia.v1.0.0.jl",
     "https://github.com/JuliaInterop/libcxxwrap-julia/releases/download/v0.5.1/build_libcxxwrap-julia-1.0.v0.5.1.jl",
+    "https://github.com/TeroFrondelius/tfelBuilder/releases/download/v0.1.0/build_tfel_binaries.v3.2.1-master.jl",
     "https://github.com/TeroFrondelius/mgisBuilder/releases/download/v0.2.0/build_mgis_binaries.v1.0.0-master.jl"
 ]
 
