@@ -1,8 +1,10 @@
 using MFront
 using Test
 
+lpath = abspath(joinpath(dirname(Base.find_package("MFront")),"..","usr","lib"))
+
 @testset "MFront.jl" begin
     # Write your own tests here.
-    @test isfile("../deps/usr/lib/mgis-julia.so")
-    @test isfile("../deps/usr/lib/libMFrontGenericInterface.so")
+    @test isfile(joinpath(lpath,"mgis-julia.so"))
+    @test isfile(joinpath(lpath,"libMFrontGenericInterface.so"))
 end
