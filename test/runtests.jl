@@ -2,9 +2,9 @@ using MFront
 using Test
 
 lpath = abspath(joinpath(dirname(Base.find_package("MFront")),"..","deps","usr","lib"))
-println(abspath(joinpath(dirname(Base.find_package("MFront")),"..")))
-println(abspath(joinpath(dirname(Base.find_package("MFront")),"..","deps")))
-println(abspath(joinpath(dirname(Base.find_package("MFront")),"..","deps","usr")))
+println(readdir(abspath(joinpath(dirname(Base.find_package("MFront")),".."))))
+println(readdir(abspath(joinpath(dirname(Base.find_package("MFront")),"..","deps"))))
+println(readdir(abspath(joinpath(dirname(Base.find_package("MFront")),"..","deps","usr"))))
 
 libs = readdir(lpath)
 println(libs)
