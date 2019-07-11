@@ -6,5 +6,5 @@
 /dev/
 /deps/usr
 /deps/build.log
-/deps/build_mgis_binaries.jl
+/deps/build_script.jl
 /deps/deps.jl

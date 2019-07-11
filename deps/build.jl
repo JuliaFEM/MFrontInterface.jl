@@ -20,5 +20,5 @@ dependencies = [
 ]
 
 for build_script in dependencies
-    include(download(build_script))
+    include(download(build_script,"build_script.jl"))
 end
