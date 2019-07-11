@@ -3,6 +3,10 @@ uuid = "e11c49fe-a28b-11e9-368f-1972e58ee9fb"
 authors = ["Tero Frondelius", "Thomas Helfer"]
 version = "0.1.0"
 
+[deps]
+BinaryProvider = "b99e7846-7c00-51b0-8f62-c81ae34c0232"
+CxxWrap = "1f15a43c-97ca-5a2a-ae31-89f07a497df4"
+
 [compat]
 julia = "1"
 
