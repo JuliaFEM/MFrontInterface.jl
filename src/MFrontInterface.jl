@@ -1,4 +1,4 @@
-module MFront
+module MFrontInterface
 
 greet() = print("Hello World!")
 

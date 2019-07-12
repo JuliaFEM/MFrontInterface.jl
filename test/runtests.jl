@@ -1,9 +1,9 @@
-using MFront
+using MFrontInterface
 using Test
 
-lpath = abspath(joinpath(dirname(Base.find_package("MFront")),"..","deps","usr"))
+lpath = abspath(joinpath(dirname(Base.find_package("MFrontInterface")),"..","deps","usr"))
 
-@testset "MFront.jl" begin
+@testset "MFrontInterface.jl" begin
     @testset "Binary dependencies" begin
         @test isfile(joinpath(lpath,"lib","mgis-julia.so"))
         @test isfile(joinpath(lpath,"lib","libMFrontGenericInterface.so"))
