@@ -1,8 +1,8 @@
-module MFront
-const lpath = abspath(joinpath(dirname(Base.find_package("MFront")),"..","deps","usr","lib"))
+module MFrontInterface
+const lpath = abspath(joinpath(dirname(Base.find_package("MFrontInterface")),"..","deps","usr","lib"))
 
 function mfront(model)
-    insdir = abspath(joinpath(dirname(Base.find_package("MFront")),"..","deps","usr"))
+    insdir = abspath(joinpath(dirname(Base.find_package("MFrontInterface")),"..","deps","usr"))
     bindir = joinpath(insdir,"bin")
     curdir = pwd()
     tmpdir = mktempdir()
@@ -34,7 +34,7 @@ function __init__()
 end
 
 module behaviour
-const lpath = abspath(joinpath(dirname(Base.find_package("MFront")),"..","deps","usr","lib"))
+const lpath = abspath(joinpath(dirname(Base.find_package("MFrontInterface")),"..","deps","usr","lib"))
 using CxxWrap
 @wrapmodule(joinpath(lpath,"mgis-julia.so"),:define_mgis_behaviour_module)
 function __init__()

@@ -1,5 +1,5 @@
-name = "MFront"
-uuid = "e11c49fe-a28b-11e9-368f-1972e58ee9fb"
+name = "MFrontInterface"
+uuid = "f46a0e2b-0ed0-5677-a4b9-4be52fead4dc"
 authors = ["Tero Frondelius", "Thomas Helfer"]
 version = "0.1.0"
 
