@@ -1,4 +1,4 @@
-name = "MFront"
+name = "MFrontInterface"
 uuid = "e11c49fe-a28b-11e9-368f-1972e58ee9fb"
 authors = ["Tero Frondelius", "Thomas Helfer"]
 version = "0.1.0"
