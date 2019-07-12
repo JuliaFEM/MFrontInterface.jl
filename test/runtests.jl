@@ -1,4 +1,5 @@
 using MFrontInterface
+using DelimitedFiles
 using Test
 
 lpath = abspath(joinpath(dirname(Base.find_package("MFrontInterface")),"..","deps","usr"))
@@ -9,4 +10,5 @@ lpath = abspath(joinpath(dirname(Base.find_package("MFrontInterface")),"..","dep
         @test isfile(joinpath(lpath,"lib","libMFrontGenericInterface.so"))
         @test isfile(joinpath(lpath,"bin","mfront"))
     end
+    include("test_norton_model.jl")
 end
