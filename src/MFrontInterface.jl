@@ -1,8 +1,4 @@
 module MFrontInterface
-
-#using Reexport
-#    @reexport module behaviour
-#end
 const lpath = abspath(joinpath(dirname(Base.find_package("MFrontInterface")),"..","deps","usr","lib"))
 
 using CxxWrap
