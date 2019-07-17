@@ -1,16 +1,21 @@
 module MFrontInterface
-const lpath = abspath(joinpath(dirname(Base.find_package("MFrontInterface")),"..","deps","usr","lib"))
+import Libdl
+if Sys.iswindows()
+    const lpath = abspath(joinpath(dirname(Base.find_package("MFrontInterface")),"..","deps","usr","lib"))
+else
+    const lpath = abspath(joinpath(dirname(Base.find_package("MFrontInterface")),"..","deps","usr","lib"))
+end
 
 using CxxWrap
-@wrapmodule(joinpath(lpath,"mgis-julia.so"),:define_mgis_module)
+@wrapmodule(joinpath(lpath,"mgis-julia." * Libdl.dlext),:define_mgis_module)
 function __init__()
     @initcxx
 end
 
 module behaviour
-const lpath = abspath(joinpath(dirname(Base.find_package("MFrontInterface")),"..","deps","usr","lib"))
+const lpath = MFrontInterface.lpath
 using CxxWrap
-@wrapmodule(joinpath(lpath,"mgis-julia.so"),:define_mgis_behaviour_module)
+@wrapmodule(joinpath(lpath,"mgis-julia." * Libdl.dlext),:define_mgis_behaviour_module)
 function __init__()
     @initcxx
 end
