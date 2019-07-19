@@ -1,11 +1,5 @@
 @testset "Norton model" begin
 
-# shorten namespace name
-mbv = MFrontInterface.behaviour
-
-# comparison criterion
-eps = 1.e-12
-
 b = load("data/libBehaviour.so","Norton", mbv.Tridimensional)
 
 d = BehaviourData(b)
