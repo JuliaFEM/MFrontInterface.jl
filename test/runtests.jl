@@ -1,14 +1,17 @@
 using MFrontInterface
 using DelimitedFiles
 using Test
+lpath = MFrontInterface.lpath
 
-lpath = abspath(joinpath(dirname(Base.find_package("MFrontInterface")),"..","deps","usr"))
+# shorten namespace name
+mbv = MFrontInterface.behaviour
+
+# comparison criterion
+eps = 1.e-12
 
 @testset "MFrontInterface.jl" begin
-    @testset "Binary dependencies" begin
-        @test isfile(joinpath(lpath,"lib","mgis-julia.so"))
-        @test isfile(joinpath(lpath,"lib","libMFrontGenericInterface.so"))
-        @test isfile(joinpath(lpath,"bin","mfront"))
+    include("test_binary_dependencies.jl")
+    if Sys.islinux()
+        include("test_norton_model.jl")
     end
-    include("test_norton_model.jl")
 end
