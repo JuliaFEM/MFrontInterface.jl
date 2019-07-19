@@ -35,9 +35,9 @@ function Base.show(io::IO,m::BehaviourAllocated)
     print(io, "TFEL version: ", get_tfel_version(m))
 end
 
-function Base.show(io::IO,m::BehaviourDataAllocated)
-    print(io, "Behaviour Data ")
-end
+# function Base.show(io::IO,m::BehaviourDataAllocated)
+#     print(io, "Behaviour Data ")
+# end
 
 end # module behaviour
 # Re-exporting behaviour model functions
