@@ -30,9 +30,26 @@ export get_final_state, update, get_gradients, get_initial_state, integrate
 export get_initial_state
 
 function Base.show(io::IO,m::BehaviourAllocated)
-    println(io, "libBehaviour: generated from ", get_source(m))
-    println(io, "name of the behaviour: ", get_behaviour(m))
-    print(io, "TFEL version: ", get_tfel_version(m))
+    print(io, "behaviour ", get_behaviour(m))
+    print(io, " in shared library Behaviour for modelling hypothesis ")
+    print(io, toString(get_hypothesis(m)))
+    print(io, " generated from ", get_source(m), " using TFEL version: ")
+    print(io, get_tfel_version(m), ".")
+end
+
+function Base.iterate(iter::RealsVectorRef, state=(1, 1))
+    element, count = state
+    if count > length(iter)
+        return nothing
+    end
+    return (iter[element], (element + 1, count + 1))
+end
+
+function Base.show(io::IO, m::RealsVectorRef)
+    println(io, length(m),"-element RealsVector")
+    for i in m
+        println(io, " ", i)
+    end
 end
 
 # function Base.show(io::IO,m::BehaviourDataAllocated)
