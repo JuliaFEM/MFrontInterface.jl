@@ -9,4 +9,8 @@
     RealsVectorRef_expected = "7-element RealsVector\n 0.0\n 0.0\n 0.0\n 0.0\n 0.0\n 0.0\n 0.0\n"
     @test RealsVectorRef_expected == RealsVectorRef_out
 
+    StringsVectorAllocated_out = @capture_out show(get_parameters(b))
+    StringsVectorAllocated_expected = "11-element StringsVector\n epsilon\n YoungModulus\n PoissonRatio\n RelativeValueForTheEquivalentStressLowerBoundDefinition\n K\n E\n A\n minimal_time_step_scaling_factor\n maximal_time_step_scaling_factor\n theta\n numerical_jacobian_epsilon\n"
+    @test StringsVectorAllocated_expected == StringsVectorAllocated_out
+
 end
