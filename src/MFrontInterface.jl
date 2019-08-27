@@ -27,11 +27,12 @@ end
 export load, BehaviourData, get_variable_offset, get_internal_state_variables
 export get_hypothesis, set_time_increment!, set_external_state_variable!
 export get_final_state, update, get_gradients, get_initial_state, integrate
-export get_initial_state, get_parameters
+export get_initial_state, get_parameters, get_external_state_variables
 
 function Base.show(io::IO,m::BehaviourAllocated)
     print(io, "behaviour ", get_behaviour(m))
-    print(io, " in shared library Behaviour for modelling hypothesis ")
+    print(io, " in shared library ", get_library(m))
+    print(io, " for modelling hypothesis ")
     print(io, toString(get_hypothesis(m)))
     print(io, " generated from ", get_source(m), " using TFEL version: ")
     print(io, get_tfel_version(m), ".")
@@ -67,9 +68,21 @@ function Base.show(io::IO, m::StringsVectorAllocated)
     end
 end
 
-# function Base.show(io::IO,m::BehaviourDataAllocated)
-#     print(io, "Behaviour Data ")
-# end
+function Base.iterate(iter::VariablesVectorAllocated, state=(1, 1))
+    element, count = state
+    if count > length(iter)
+        return nothing
+    end
+    return (iter[element], (element + 1, count + 1))
+end
+
+function Base.show(io::IO, m::VariablesVectorAllocated)
+    println(io, length(m),"-element VariablesVector")
+    for i in m
+        println(io, " ", get_name(i))
+    end
+end
+
 
 end # module behaviour
 # Re-exporting behaviour model functions
@@ -77,5 +90,5 @@ using .behaviour
 export load, BehaviourData, get_variable_offset, get_internal_state_variables
 export get_hypothesis, set_time_increment!, set_external_state_variable!
 export get_final_state, update, get_gradients, get_initial_state, integrate
-export get_initial_state, get_parameters
+export get_initial_state, get_parameters, get_external_state_variables
 end # module MFront`
