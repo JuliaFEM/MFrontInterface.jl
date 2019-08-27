@@ -27,7 +27,7 @@ end
 export load, BehaviourData, get_variable_offset, get_internal_state_variables
 export get_hypothesis, set_time_increment!, set_external_state_variable!
 export get_final_state, update, get_gradients, get_initial_state, integrate
-export get_initial_state
+export get_initial_state, get_parameters
 
 function Base.show(io::IO,m::BehaviourAllocated)
     print(io, "behaviour ", get_behaviour(m))
@@ -52,6 +52,21 @@ function Base.show(io::IO, m::RealsVectorRef)
     end
 end
 
+function Base.iterate(iter::StringsVectorAllocated, state=(1, 1))
+    element, count = state
+    if count > length(iter)
+        return nothing
+    end
+    return (iter[element], (element + 1, count + 1))
+end
+
+function Base.show(io::IO, m::StringsVectorAllocated)
+    println(io, length(m),"-element StringsVector")
+    for i in m
+        println(io, " ", i)
+    end
+end
+
 # function Base.show(io::IO,m::BehaviourDataAllocated)
 #     print(io, "Behaviour Data ")
 # end
@@ -62,5 +77,5 @@ using .behaviour
 export load, BehaviourData, get_variable_offset, get_internal_state_variables
 export get_hypothesis, set_time_increment!, set_external_state_variable!
 export get_final_state, update, get_gradients, get_initial_state, integrate
-export get_initial_state
+export get_initial_state, get_parameters
 end # module MFront`
