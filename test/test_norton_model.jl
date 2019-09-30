@@ -1,4 +1,17 @@
-@testset "Norton model" begin
+# This file is a part of JuliaFEM.
+# License is MIT: see https://github.com/JuliaFEM/MFrontInterface.jl/blob/master/LICENSE
+
+using MFrontInterface
+using DelimitedFiles
+using Suppressor
+using Test
+lpath = MFrontInterface.lpath
+
+# shorten namespace name
+mbv = MFrontInterface.behaviour
+
+# comparison criterion
+eps = 1.e-12
 
 b = load("data/libBehaviour.so","Norton", mbv.Tridimensional)
 
@@ -38,4 +51,3 @@ for i in 1:20
     @test isapprox(p[i],pref[i]; atol=eps)
 end
 
-end

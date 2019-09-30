@@ -13,7 +13,7 @@ eps = 1.e-12
 @testset "MFrontInterface.jl" begin
     include("test_binary_dependencies.jl")
     if Sys.islinux()
-        include("test_norton_model.jl")
+        @testset "Norton model" begin include("test_norton_model.jl") end
         include("test_show_methods.jl")
     end
 end
