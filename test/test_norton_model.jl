@@ -13,7 +13,7 @@ mbv = MFrontInterface.behaviour
 # comparison criterion
 eps = 1.e-12
 
-b = load("data/libBehaviour.so","Norton", mbv.Tridimensional)
+b = load("test_norton_model/libBehaviour.so","Norton", mbv.Tridimensional)
 
 d = BehaviourData(b)
 o = get_variable_offset(get_internal_state_variables(b),
@@ -44,7 +44,7 @@ for i in 1:20
 end
 
 # reference values
-pref = readdlm("data/norton_comparison_results.txt")
+pref = readdlm("test_norton_model/norton_comparison_results.txt")
 
 # check results
 for i in 1:20

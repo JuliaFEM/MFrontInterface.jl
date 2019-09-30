@@ -1,7 +1,7 @@
 @testset "show methods" begin
-    b = load("data/libBehaviour.so","Norton",mbv.Tridimensional)
+    b = load("test_show_methods/libBehaviour.so","Norton",mbv.Tridimensional)
     BehaviourAllocated_out = @capture_out show(b)
-    BehaviourAllocated_expected = "behaviour Norton in shared library data/libBehaviour.so for modelling hypothesis Tridimensional generated from Norton.mfront using TFEL version: 3.3.0-dev."
+    BehaviourAllocated_expected = "behaviour Norton in shared library test_show_methods/libBehaviour.so for modelling hypothesis Tridimensional generated from Norton.mfront using TFEL version: 3.3.0-dev."
     @test BehaviourAllocated_out == BehaviourAllocated_expected
 
     d = BehaviourData(b)
