@@ -1,6 +1,7 @@
 using Parameters
 using Tensors
 using Materials
+using FEMMaterials
 
 mgis_bv = MFrontInterface.behaviour
 
