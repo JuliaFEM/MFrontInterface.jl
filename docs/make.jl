@@ -46,6 +46,7 @@ function generate_docs(pkg)
     for test_file in readdir(testdir)
         isdir(test_file) || continue
         startswith(test_file, "test_") || continue
+        open(test_file) do file occursin("# #", read(file, String)) end || continue
         Literate.markdown(joinpath(testdir, test_file), outdir; documenter=true, preprocess=preprocess)
         generated_test_file = joinpath("tests", first(splitext(test_file)) * ".md")
         push!(test_pages, generated_test_file)
