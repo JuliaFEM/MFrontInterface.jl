@@ -23,5 +23,9 @@ eps = 1.e-12
         @testset "test MFront ideal plastic material model with shear strain" begin
         include("test_isotropic_linear_hardening_plasticity_shear.jl")
         end
+
+        @testset "test MFront together with FEMMaterials" begin
+        include("test_mfront_mecamatso.jl")
+        end
     end
 end
