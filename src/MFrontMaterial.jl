@@ -48,7 +48,7 @@ MFront material structure.
     behaviour_data :: MFrontInterface.behaviour.BehaviourDataAllocated
 end
 
-function integrate_material!(material::MFrontMaterial)
+function Materials.integrate_material!(material::MFrontMaterial)
     behaviour = material.behaviour
     behaviour_data = material.behaviour_data
 
@@ -102,7 +102,7 @@ function integrate_material!(material::MFrontMaterial)
     material.variables_new = variables_new
 end
 
-function update_material!(material::MFrontMaterial)
+function Materials.update_material!(material::MFrontMaterial)
     mgis_bv.update(material.behaviour_data)
 
     material.drivers += material.ddrivers
@@ -111,7 +111,7 @@ function update_material!(material::MFrontMaterial)
     reset_material!(material)
 end
 
-function reset_material!(material::MFrontMaterial)
+function Materials.reset_material!(material::MFrontMaterial)
     material.ddrivers = typeof(material.ddrivers)()
     material.variables_new = typeof(material.variables_new)()
 end
@@ -119,11 +119,12 @@ end
 # other material_* functions are used from FEMMaterials
 
 import FEMMaterials: update_ip!
+using FEMMaterials
 
 """
 Initializes integration point `ip` for data storage of both `variables` and `drivers` at simulation start `time`.
 """
-function material_preprocess_analysis!(material::MFrontMaterial, element, ip, time)
+function FEMMaterials.material_preprocess_analysis!(material::MFrontMaterial, element, ip, time)
     update_ip!(material, ip, time)
     # Read parameter values
     values = element("external_variables", ip, time)
@@ -134,7 +135,7 @@ end
 Initializes integration point `ip` for data storage of both `variables` and `drivers` at simulation start `time`.
 Updates external variables, e.g. temperature, stored in `ip` to material
 """
-function material_preprocess_increment!(material::MFrontMaterial, element, ip, time)
+function FEMMaterials.material_preprocess_increment!(material::MFrontMaterial, element, ip, time)
 
     values = element("external_variables", ip, time)
     material.external_variables = MFrontExternalVariableState(material.external_variables.names, values)
