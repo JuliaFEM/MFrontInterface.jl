@@ -119,12 +119,12 @@ end
 # other material_* functions are used from FEMMaterials
 
 import FEMMaterials: update_ip!
-using FEMMaterials
+import FEMBase: Element, Hex8
 
 """
 Initializes integration point `ip` for data storage of both `variables` and `drivers` at simulation start `time`.
 """
-function FEMMaterials.material_preprocess_analysis!(material::MFrontMaterial, element, ip, time)
+function FEMMaterials.material_preprocess_analysis!(material::MFrontMaterial, element::Element{Hex8}, ip, time)
     update_ip!(material, ip, time)
     # Read parameter values
     values = element("external_variables", ip, time)
@@ -135,7 +135,7 @@ end
 Initializes integration point `ip` for data storage of both `variables` and `drivers` at simulation start `time`.
 Updates external variables, e.g. temperature, stored in `ip` to material
 """
-function FEMMaterials.material_preprocess_increment!(material::MFrontMaterial, element, ip, time)
+function FEMMaterials.material_preprocess_increment!(material::MFrontMaterial, element::Element{Hex8}, ip, time)
 
     values = element("external_variables", ip, time)
     material.external_variables = MFrontExternalVariableState(material.external_variables.names, values)
