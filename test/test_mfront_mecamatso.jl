@@ -22,7 +22,7 @@ function MaterialTest()
     return MFrontMaterial(behaviour=behaviour, behaviour_data=behaviour_data, external_variables=ext_vatiable_state)
 end
 
-analysis, problem, element, bc_elements, ip = get_one_element_material_analysis(:MaterialTest)
+analysis, problem, element, bc_elements, ip = get_one_element_material_analysis(:(Main.MaterialTest))
 
 temperature = 293.15
 update!(element, "external_variables", [temperature])
