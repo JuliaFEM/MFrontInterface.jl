@@ -92,7 +92,7 @@ export get_hypothesis, set_time_increment!, set_external_state_variable!
 export get_final_state, update, get_gradients, get_initial_state, integrate
 export get_initial_state, get_parameters, get_external_state_variables
 
-include("MFrontMaterial.jl")
+include("mfront_material.jl")
 export MFrontMaterial, MFrontDriverState, MFrontVariableState, MFrontExternalVariableState
 export integrate_material!, update_material!, reset_material!
 export material_preprocess_analysis!, material_preprocess_increment!
