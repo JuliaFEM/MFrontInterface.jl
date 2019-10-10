@@ -1,6 +1,19 @@
-@testset "Norton model" begin
+# This file is a part of JuliaFEM.
+# License is MIT: see https://github.com/JuliaFEM/MFrontInterface.jl/blob/master/LICENSE
 
-b = load("data/libBehaviour.so","Norton", mbv.Tridimensional)
+using MFrontInterface
+using DelimitedFiles
+using Suppressor
+using Test
+lpath = MFrontInterface.lpath
+
+# shorten namespace name
+mbv = MFrontInterface.behaviour
+
+# comparison criterion
+eps = 1.e-12
+
+b = load("test_norton_model/libBehaviour.so","Norton", mbv.Tridimensional)
 
 d = BehaviourData(b)
 o = get_variable_offset(get_internal_state_variables(b),
@@ -31,11 +44,10 @@ for i in 1:20
 end
 
 # reference values
-pref = readdlm("data/norton_comparison_results.txt")
+pref = readdlm("test_norton_model/norton_comparison_results.txt")
 
 # check results
 for i in 1:20
     @test isapprox(p[i],pref[i]; atol=eps)
 end
 
-end
