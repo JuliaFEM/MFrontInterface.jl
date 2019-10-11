@@ -22,7 +22,7 @@ jobs:
     - stage: "Documentation"
       os: linux
       before_script:
-        - julia --project=docs/ -e 'using Pkg; Pkg.pin(PackageSpec(name="CxxWrap",version="0.8.1")); Pkg.add(PackageSpec(url="https://github.com/JuliaFEM/FEMMaterials.jl", rev="master"))'
+        - julia --project=docs/ -e 'using Pkg; Pkg.add(PackageSpec(url="https://github.com/JuliaFEM/FEMMaterials.jl", rev="master"))'
       script:
         - julia --project=docs/ -e 'using Pkg; Pkg.develop(PackageSpec(path=pwd())); Pkg.instantiate(); Pkg.build()'
         - julia --project=docs/ docs/make.jl
@@ -33,4 +33,4 @@ after_success:
   - julia -e 'using Pkg; Pkg.add("Coverage"); using Coverage; Coveralls.submit(process_folder())'
 
 before_script:
-  - julia -e 'using Pkg; Pkg.pin(PackageSpec(name="CxxWrap", version="0.8.1")); Pkg.add(PackageSpec(url="https://github.com/JuliaFEM/FEMMaterials.jl", rev="master"))'
+  - julia -e 'using Pkg; Pkg.add(PackageSpec(url="https://github.com/JuliaFEM/FEMMaterials.jl", rev="master"))'

@@ -15,6 +15,9 @@ Tensors = "48a634ad-e948-5137-8d70-aa71f2a747f4"
 
 [compat]
 julia = "1"
+CxxWrap = "= 0.8.1"  # [0.8.1, 0.8.1] double check the release number
+# Note CxxWrap version have to match with deps/build.jl libcxxwrap version
+# Also libcxxwrap version need to be changed in https://github.com/TeroFrondelius/mgisBuilder/blob/master/build_tarballs.jl
 
 [extras]
 Suppressor = "fd094767-a336-5f1f-9728-57cf17d0bbfb"
