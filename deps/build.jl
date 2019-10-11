@@ -18,6 +18,9 @@ dependencies = [
     "https://github.com/TeroFrondelius/tfelBuilder/releases/download/v0.3.0/build_tfel_binaries.v3.2.1-master.jl",
     "https://github.com/TeroFrondelius/mgisBuilder/releases/download/v0.2.0/build_mgis_binaries.v1.0.0-master.jl"
 ]
+# # Note libcxxwrap version have to match with CxxWrap version in Project.toml
+# Also libcxxwrap version need to be changed in https://github.com/TeroFrondelius/mgisBuilder/blob/master/build_tarballs.jl
+
 
 for build_script in dependencies
     script_name = split(build_script,"/")[end]
