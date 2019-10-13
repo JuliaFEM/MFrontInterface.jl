@@ -9,3 +9,19 @@
 [docs-stable-url]: https://juliafem.github.io/MFrontInterface.jl/stable
 [docs-latest-img]: https://img.shields.io/badge/docs-latest-blue.svg
 [docs-latest-url]: https://juliafem.github.io/MFrontInterface.jl/latest
+
+
+## Citation
+
+If you like our package, please consider citing with the infromation in [CITATION.bib](https://github.com/JuliaFEM/MFrontInterface.jl/blob/master/CITATION.bib):
+
+```
+@inproceedings{frondelius2019mfrontinterface,
+    title={MFrontInterface.jl: MFront material models in Julia{FEM}},
+    author={Tero Frondelius and Thomas Helfer and Ivan Yashchuk and Joona Vaara  and Anssi Laukkanen},
+    editor={H. Koivurova and A. H. Niemi},
+    booktitle={Proceedings of the 32nd Nordic Seminar on Computational Mechanics},
+    year={2019},
+    place={Oulu}
+}
+```
