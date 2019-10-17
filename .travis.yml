@@ -21,6 +21,8 @@ jobs:
   include:
     - stage: "Documentation"
       os: linux
+      before_script:
+        - julia --project=docs/ -e 'using Pkg; Pkg.add(PackageSpec(url="https://github.com/KristofferC/JuAFEM.jl.git", rev="master"))'
       script:
         - julia --project=docs/ -e 'using Pkg; Pkg.develop(PackageSpec(path=pwd())); Pkg.instantiate(); Pkg.build()'
         - julia --project=docs/ docs/make.jl
@@ -29,3 +31,6 @@ jobs:
 
 after_success:
   - julia -e 'using Pkg; Pkg.add("Coverage"); using Coverage; Coveralls.submit(process_folder())'
+
+before_script:
+  - julia -e 'using Pkg; Pkg.add(PackageSpec(url="https://github.com/KristofferC/JuAFEM.jl.git", rev="master"))'

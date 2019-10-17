@@ -27,5 +27,9 @@ eps = 1.e-12
         @testset "test MFront together with FEMMaterials" begin
         include("test_mfront_mecamatso.jl")
         end
+
+        @testset "test MFront together with JuAFEM" begin
+        include("test_mfront_juafem_3dbeam.jl")
+        end
     end
 end
