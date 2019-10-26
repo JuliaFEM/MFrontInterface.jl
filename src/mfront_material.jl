@@ -43,7 +43,7 @@ MFront material structure.
     variables_new :: MFrontVariableState = MFrontVariableState()
 
     external_variables :: MFrontExternalVariableState = MFrontExternalVariableState()
-    
+
     behaviour :: MFrontInterface.behaviour.BehaviourAllocated
     behaviour_data :: MFrontInterface.behaviour.BehaviourDataAllocated
 end
@@ -83,7 +83,7 @@ function Materials.integrate_material!(material::MFrontMaterial)
 
     stress = [mgis_bv.get_thermodynamic_forces(mgis_bv.get_final_state(behaviour_data))[k] for k in 1:6]
     jacobian = reshape([mgis_bv.get_tangent_operator(behaviour_data)[k] for k in 1:36], 6, 6)
-    
+
     # now reorder to voigt 11, 22, 33, 12, 13, 23 -> 11, 22, 33, 23, 13, 12
     stress = [stress[1], stress[2], stress[3], stress[6], stress[5], stress[4]]
     stress = frommandel(SymmetricTensor{2, 3}, stress)
@@ -145,4 +145,22 @@ function FEMMaterials.material_preprocess_increment!(material::MFrontMaterial, e
     material.ddrivers.time = dtime
 
     return nothing
+end
+
+"""
+Higher level API function to MFront MGIS.  
+"""
+function MFrontMaterialModel(;lib_path, behaviour_name, hypothesis=mgis_bv.Tridimensional)
+
+    behaviour = load(lib_path, behaviour_name, hypothesis)
+    behaviour_data = BehaviourData(behaviour)
+
+    ext_variable_names = [mgis_bv.get_name(mgis_bv.get_external_state_variables(behaviour)[i]) for i in 1:mgis_bv.length(mgis_bv.get_external_state_variables(behaviour))]
+    ext_variable_values = zeros(length(ext_variable_names))
+    ext_vatiable_state = MFrontExternalVariableState(names=ext_variable_names,
+                                                     values=ext_variable_values)
+
+    return MFrontMaterial(behaviour=behaviour,
+                          behaviour_data=behaviour_data,
+                          external_variables=ext_vatiable_state)
 end

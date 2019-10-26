@@ -35,6 +35,10 @@ eps = 1.e-12
         @testset "test plasticity with uniaxial_increment!" begin
         include("test_vonmises_uniaxial.jl")
         end
+
+        @testset "mfront - helper function" begin
+        include("test_mfront_helper_functions.jl")
+        end
         end
     end
 end
