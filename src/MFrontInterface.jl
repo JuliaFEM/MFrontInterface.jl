@@ -97,4 +97,6 @@ export MFrontMaterial, MFrontDriverState, MFrontVariableState, MFrontExternalVar
 export integrate_material!, update_material!, reset_material!
 export material_preprocess_analysis!, material_preprocess_increment!
 
+include("mfront_helper_functions.jl")
+
 end # module MFront`
