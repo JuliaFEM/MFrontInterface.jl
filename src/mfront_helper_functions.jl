@@ -20,21 +20,6 @@ function mfront_sh_script(mfront_fn; install_dir=pwd())
     return script
 end
 
-function move_lib(from,to,overwrite=false)
-    orig_to = splitext(to)
-    if overwrite
-        mv(from,to, force=overwrite)
-    else
-        for i=1:10000
-            try
-                mv(from, to, force=overwrite)
-                break
-            catch
-                to = orig_to[1] * string(i) * orig_to[2]
-            end
-        end
-    end
-end
 
 """
 This is shell helper function to run mfront-command
