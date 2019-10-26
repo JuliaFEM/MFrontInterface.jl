@@ -25,3 +25,32 @@ If you like our package, please consider citing with the infromation in [CITATIO
     place={Oulu}
 }
 ```
+
+## Example of usage
+
+```
+using MFrontInterface
+
+norton = raw"""
+@DSL Implicit;
+@Author Thomas Helfer;
+@Date 3 / 08 / 2018;
+@Behaviour NortonTest;
+@Description {
+  "This file implements the Norton law "
+  "using the StandardElastoViscoplasticity brick"
+}
+
+@ModellingHypotheses{".+"};
+@Epsilon 1.e-16;
+
+@Brick StandardElastoViscoPlasticity{
+  stress_potential : "Hooke" {young_modulus : 150e9, poisson_ratio : 0.3},
+  inelastic_flow : "Norton" {criterion : "Mises", A : 1.0e-10, n : 1.2, K : 1}
+};
+""";
+
+path = mfront(norton)
+
+mat = MFrontMaterialModel(lib_path=path, behaviour_name="NortonTest")
+```

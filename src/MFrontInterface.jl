@@ -95,6 +95,9 @@ export get_initial_state, get_parameters, get_external_state_variables
 include("mfront_material.jl")
 export MFrontMaterial, MFrontDriverState, MFrontVariableState, MFrontExternalVariableState
 export integrate_material!, update_material!, reset_material!
-export material_preprocess_analysis!, material_preprocess_increment!
+export material_preprocess_analysis!, material_preprocess_increment!, MFrontMaterialModel
+
+include("mfront_helper_functions.jl")
+export mfront
 
 end # module MFront`

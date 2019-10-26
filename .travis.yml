@@ -1,5 +1,8 @@
 language: julia
 
+before_install:
+  - sudo apt-get -y install patchelf
+  
 os:
   - linux
 
