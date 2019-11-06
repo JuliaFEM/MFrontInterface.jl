@@ -1,7 +1,7 @@
 name = "MFrontInterface"
 uuid = "f46a0e2b-0ed0-5677-a4b9-4be52fead4dc"
 authors = ["Tero Frondelius", "Thomas Helfer", "Ivan Yashchuk"]
-version = "0.1.0"
+version = "0.2.0"
 
 [deps]
 BinaryProvider = "b99e7846-7c00-51b0-8f62-c81ae34c0232"
