@@ -32,7 +32,13 @@ If you like our package, please consider citing with the infromation in [CITATIO
 
 ## Example of usage
 
-First we load the needed package and define the MFront model.
+First we load the needed package and define the MFront model. As an example we use
+the Norton viscoplasticity.
+
+![Norton Stress-Strain Curve][norton-equation]
+
+[norton-equation]: https://latex.codecogs.com/svg.download?%5Csigma%20%3D%20K%20%5Cleft%28%20%5Cfrac%7B%20%5C%7C%20%5Cdot%7B%5Cvarepsilon%7D%5E%7Bpl%7D%20%5C%7C%7D%7BA%7D%20%5Cright%29%5E%7B1/n%7D
+
 
 ```julia
 using MFrontInterface, Materials, Plots
@@ -73,7 +79,6 @@ block defines the tension phase and the second the relaxation phase.
 ```julia
 s11 = [0.]; e11 = [0.]; tim = [0.]
 for i=1:200
-    #dstran = 0.001
     dstran = 1e-5
     uniaxial_increment!(mat, dstran, 1.0)
     update_material!(mat)
