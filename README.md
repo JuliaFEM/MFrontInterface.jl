@@ -37,7 +37,8 @@ the Norton viscoplasticity.
 
 ![Norton Stress-Strain Curve][norton-equation]
 
-[norton-equation]: https://latex.codecogs.com/svg.download?%5Csigma%20%3D%20K%20%5Cleft%28%20%5Cfrac%7B%20%5C%7C%20%5Cdot%7B%5Cvarepsilon%7D%5E%7Bpl%7D%20%5C%7C%7D%7BA%7D%20%5Cright%29%5E%7B1/n%7D
+[norton-equation]: https://raw.githubusercontent.com/JuliaFEM/MFrontInterface.jl/master/docs/src/Norton-equation.png
+
 
 
 ```julia
